@@ -1,0 +1,82 @@
+body {
+    margin-left: 50px;
+    box-sizing: border-box;
+}
+
+div{
+    display: flex;
+    align-items: center;
+    padding-bottom: 10px;
+}
+ol {
+    border: 1px solid black;
+    padding-left: 0;
+    margin: 0;
+    /*If you remove counter-reset: item; see below*/
+    counter-reset: item;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid black;
+    padding-left: 20px;
+    position: relative;
+}
+
+li:last-child {
+    border-bottom: none;
+}
+
+/* Custom number display */
+/* If you remove counter-reset: item;
+the counter should still increment for each list item in the same list and across different lists. However,
+you mentioned that when counter-reset is removed,
+the list always starts from 1 and doesn’t increment. 
+
+Cause: This is because the counter is not being properly initialized. The counter-reset: item;
+is responsible for initializing the counter (setting it to 0 at the start of each list). Without it,
+the counter isn't being recognized or properly initialized, so it starts from 1 and doesn' t increment.*/
+
+li::before {
+    content: counter(item) ". ";
+    counter-increment: item;
+    position: absolute;
+    left: 0.5%;
+    top: 50%;
+    transform: translateY(-50%);
+    color: black;
+}
+
+p {
+    margin: 0;
+    padding: 5px;
+}
+i {
+    margin-left: 15px;
+}
+
+.form{
+    width: 50%;
+    height: 25%;
+    background-color: grey;
+    position: absolute;
+    top: 10%;
+    left: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+
+}
+.form-field{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.list-content {
+    width: 500px;
+}
+.add-button{
+    width: 55px;
+}
